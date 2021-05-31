@@ -4,9 +4,10 @@ import json
 csvFilePath = 'edu.gov_2885_27.12.2011_recommended-books.csv'
 jsonFilePath = 'edu.gov_2885_27.12.2011_recommended-books_csv_out.json'
 
+
 # Function to convert a CSV to JSON
 # Takes the file paths as arguments
-def make_json(csvFilePath, jsonFilePath):
+def csv_to_json(csvFilePath, jsonFilePath):
     # create a dictionary
     data = {}
 
@@ -29,4 +30,4 @@ def make_json(csvFilePath, jsonFilePath):
 
 
 # Call the make_json function
-make_json(csvFilePath, jsonFilePath)
+csv_to_json(csvFilePath, jsonFilePath)
