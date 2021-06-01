@@ -1,2 +1,4 @@
 /.idea/*
-/test_data/output/*
+/test_data/output/result/json/*
+/test_data/output/result/schema/*
+/test_data/output/schema_source/*
