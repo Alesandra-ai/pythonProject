@@ -1,43 +1,25 @@
 import csv
-import json
 
-csvFilePath = 'edu.gov_2885_27.12.2011_recommended-books.csv'
-jsonFilePath = 'edu.gov_2885_27.12.2011_recommended-books_csv_out.json'
+from JsonUtils import json_to_string
 
 
-# Function to convert a CSV to JSON
-# Takes the file paths as arguments
-def csv_to_json(csvFilePath, jsonFilePath):
-    # create a dictionary
-    data = {}
+# Convert csv to json array
+def csv_to_json(csv_file_path, output_file_path):
+    with open(csv_file_path, encoding='UTF-8') as csv_file:
+        csv_dict_reader = csv.DictReader(csv_file, dialect='excel-tab')
+        mapped_csv_data = []
+        for row in csv_dict_reader:
+            map_function(mapped_csv_data.append, row)
+        result_json_data = json_to_string(mapped_csv_data)
 
-    # Open a csv reader called DictReader
-    with open(csvFilePath, encoding='UTF-8') as csvFile:
-        csvReader = csv.DictReader(csvFile, dialect='excel-tab')
-        data = map_csv(csvReader)
-
-    # Open a json writer, and use the json.dumps()
-    # function to dump data
-    with open(jsonFilePath, 'w', encoding='UTF-8') as jsonFile:
-        jsonFile.write(reduce_csv(data))
+    with open(output_file_path, 'w', encoding='UTF-8') as output_file:
+        for part in result_json_data:
+            reduce_function(output_file.write, part)
 
 
-def reduce_csv(data):
-    # TODO write to file one-by-one
-    return json.dumps(data, indent=4, ensure_ascii=False)
+def map_function(fn, part):
+    fn(part)
 
 
-def map_csv(input_dict):
-    data = {}
-    # Convert each row into a dictionary
-    # and add it to data
-    for rows in input_dict:
-        # Assuming a column named 'No' to
-        # be the primary key
-        key = rows['index']
-        data[key] = rows
-    return data
-
-
-# Call the make_json function
-csv_to_json(csvFilePath, jsonFilePath)
+def reduce_function(function, part):
+    function(part)

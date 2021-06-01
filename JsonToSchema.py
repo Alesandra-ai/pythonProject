@@ -1,29 +1,13 @@
-import json
-
 from genson import SchemaBuilder
 
-example_json_input_file = 'edu.gov_2885_27.12.2011_recommended-books.json'
-example_json_schema_result_file = 'Schema2.json'
+from JsonUtils import read_json_file, write_as_json_file
 
 
-# Function to extract a Intermediate (original) JSON Schema
-# Takes the file paths as arguments
-def makeJSONSchema(jsonInputFile, jsonSchemaOutIntermediate):
-    # create dictionary
-    dataSchema = {}
+# Make json schema from json content
+def json_to_schema(json_content_file, result_file):
+    schema_builder = SchemaBuilder()
 
-    # run JSON schema builder
-    builder = SchemaBuilder()
-    builder.add_schema({"type": "object", "properties": {}})
-
-    with open(jsonInputFile, encoding='UTF-8') as fileJSON:
-        file_content = fileJSON.read()
-        builder.add_object(json.loads(file_content))
-        dataSchema = builder.to_schema()
-
-    with open(jsonSchemaOutIntermediate, 'w', encoding='UTF-8') as jsonFile:
-        jsonFile.write(json.dumps(dataSchema, indent=4, ensure_ascii=False))
-
-
-# Call the makeJSONSchema function
-makeJSONSchema(example_json_input_file, example_json_schema_result_file)
+    json_content = read_json_file(json_content_file)
+    schema_builder.add_object(json_content)
+    result_schema = schema_builder.to_schema()
+    write_as_json_file(result_file, result_schema)

@@ -1,0 +1,23 @@
+[
+    {
+        "id": "42",
+        "grade": "4",
+        "book_name": "The Hitchhiker's Guide to the Galaxy",
+        "authors": "Douglas Adams",
+        "publisher": "Megadodo Publications"
+    },
+    {
+        "id": "61",
+        "grade": "8",
+        "book_name": "A Brief History of Time",
+        "authors": "Stephen Hawking",
+        "publisher": "Bantam Dell Publishing Group"
+    },
+    {
+        "id": "72",
+        "grade": "9",
+        "book_name": "Astrophysics for People in a Hurry",
+        "authors": "Neil deGrasse Tyson",
+        "publisher": "W. W. Norton & Company"
+    }
+]
