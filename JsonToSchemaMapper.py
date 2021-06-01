@@ -4,19 +4,6 @@ from JsonUtils import read_json_file, write_as_json_file
 test_json_file = "edu.gov_2885_27.12.2011_recommended-books.json"
 test_schema_file = schema_result_file
 
-default_values = {
-    'string': '',
-    'int': 0,
-    'integer': 0,
-    'number': 0,
-    'array': [],
-    'list': [],
-    'tuple': [],
-    'dict': {},
-    'object': {},
-    'boolean': 'false',
-}
-
 
 def process(json_file, schema_file):
     result = convert_json_by_schema(read_json_file(json_file),

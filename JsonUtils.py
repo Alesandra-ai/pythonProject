@@ -1,19 +1,15 @@
 import json
 
-from genson import SchemaBuilder
+from FileUtils import read_file, write_to_file
 
 
 def read_json_file(file_path):
-    with open(file_path, encoding='UTF-8') as json_file:
-        return json.loads(json_file.read())
+    return json.loads(read_file(file_path))
 
 
-def write_as_json_file(file_name, content):
-    with open(file_name, 'w', encoding='UTF-8') as json_file:
-        json_file.write(json.dumps(content, indent=4, ensure_ascii=False))
+def write_as_json_file(path, json_content):
+    write_to_file(path, json_to_string(json_content))
 
 
-def json_to_schema(content):
-    builder = SchemaBuilder()
-    builder.add_schema(content)
-    return builder.to_schema()
+def json_to_string(json_content):
+    return json.dumps(json_content, indent=4, ensure_ascii=False)
