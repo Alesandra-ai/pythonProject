@@ -1,6 +1,6 @@
 def write_to_file(path, content):
     with open(path, 'w', encoding='UTF-8') as file_to_write:
-        file_to_write.write(content)
+        file_to_write.write(str(content))
 
 
 def read_file(path):
